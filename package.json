@@ -1,26 +1,13 @@
 {
-  "name": "freemanson666",
+  "name": "freemanson666-system",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/isaactugume950-design/FREEMANSONS666.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/isaactugume950-design/FREEMANSONS666/issues"
-  },
-  "homepage": "https://github.com/isaactugume950-design/FREEMANSONS666#readme",
   "dependencies": {
-    "express": "^5.2.1",
-    "express-session": "^1.19.0",
-    "sqlite3": "^6.0.1"
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6",
+    "express-session": "^1.17.3"
   }
 }
