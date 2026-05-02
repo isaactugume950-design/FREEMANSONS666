@@ -3,7 +3,11 @@ const sqlite3 = require("sqlite3").verbose();
 const session = require("express-session");
 
 const app = express();
-const PORT = process.env.PORT ||
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
@@ -13,9 +17,11 @@ app.use(
   session({
     secret: "freemanson_secret",
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: { secure: false }   // 👈 add this line
   })
 );
+
 
 // DATABASE
 const db = new sqlite3.Database("database.db");
