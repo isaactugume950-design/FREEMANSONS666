@@ -249,7 +249,11 @@ app.post("/pay/:id", (req, res) => {
     }
   );
 });
-if (err) return res.status(500).send("Database error");
+
+db.all("SELECT * FROM clients", (err, rows) => {
+  if (err) return res.status(500).send("Database error");
+  // continue with rows...
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
