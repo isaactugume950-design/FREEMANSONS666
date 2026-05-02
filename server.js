@@ -5,22 +5,20 @@ const session = require("express-session");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
-
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.set('trust proxy', 1); // trust Render’s proxy
 app.use(
   session({
-    secret: "freemanson_secret",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false }   // 👈 add this line
+    cookie: { secure: true }   // secure cookies on HTTPS
   })
 );
+
 
 
 // DATABASE
@@ -251,8 +249,8 @@ app.post("/pay/:id", (req, res) => {
     }
   );
 });
+if (err) return res.status(500).send("Database error");
 
-// ---------------- START SERVER ----------------
 app.listen(PORT, () => {
-  console.log("Server running on http://localhost:3000");
+  console.log(`Server running on http://localhost:${PORT}`);
 });
